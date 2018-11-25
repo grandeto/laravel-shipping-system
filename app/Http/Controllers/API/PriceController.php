@@ -63,6 +63,13 @@ class PriceController extends Controller
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
+        if ($prices->isEmpty()) {
+            return response()->json([
+                'result' => false,
+                'message' => 'No shipping methods found for the given criteria.',
+            ], Response::HTTP_NOT_FOUND);
+        }
+
         $compareList = $prices->map(function ($item, $key) {
             $new['id'] = $item->id;
             $new['method_id'] = $item->shippingMethod->name;
