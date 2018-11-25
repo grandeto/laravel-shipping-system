@@ -7,10 +7,20 @@
 
 require('./bootstrap');
 
-import ElementUI from 'element-ui';
+import { Table, TableColumn, Row, Col, Input, Select, Option, Button, Message } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 window.Vue = require('vue');
+
+Vue.use(Table);
+Vue.use(TableColumn);
+Vue.use(Row);
+Vue.use(Col);
+Vue.use(Input);
+Vue.use(Select);
+Vue.use(Option);
+Vue.use(Button);
+Vue.prototype.$message = Message;
 
 /**
  * The following block of code may be used to automatically register your
@@ -21,8 +31,6 @@ window.Vue = require('vue');
  */
 
 import App from './components/App.vue';
-
-Vue.use(ElementUI);
 
 // const files = require.context('./', true, /\.vue$/i)
 
