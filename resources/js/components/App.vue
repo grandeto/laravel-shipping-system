@@ -1,7 +1,12 @@
 <template>
     <div id="content">
+        <p>Please use the following combinations to test the app:</p>
+        <ol>
+            <li><strong>Origin country:</strong> USA; <strong>Destination country:</strong> Denmark; <strong>Weight:</strong> min 10 - max 20</li>
+            <li><strong>Origin country:</strong> Denmark; <strong>Destination country:</strong> Bulgaria; <strong>Weight:</strong> min 5 - max 10</li>
+        </ol>
         <el-row type="flex">
-            <el-col>
+            <el-col :offset="4" :span="20">
                 <el-select
                     v-model="origin"
                     placeholder="Origin country"
@@ -16,7 +21,7 @@
                     </el-option>
                 </el-select>
             </el-col>
-            <el-col>
+            <el-col :span="20">
                 <el-select
                     v-model="destination"
                     placeholder="Destination country"
@@ -31,14 +36,14 @@
                     </el-option>
                 </el-select>
             </el-col>
-            <el-col>
+            <el-col :span="14">
                 <el-input
                     class="weight-sh"
                     type="number"
                     :disabled="muteActions"
                     size="medium"
                     :span="6"
-                    placeholder="Weight"
+                    placeholder="Weight (kg)"
                     v-model="compareData.weight"
                     @input="trackChange">
                 </el-input>
@@ -71,8 +76,7 @@ import ShippmentsComponent from './ShippmentsComponent.vue';
             return {
                 countries: [],
                 prices: [],
-                noCountries: "Fetching countries. Please wait...",
-                noShippments: "Fetching shippments. Please wait...",
+                noShippments: "Fetching shipping methods. Please wait...",
                 compareData: {
                     origin_country_id: '',
                     destination_country_id: '',
@@ -110,7 +114,6 @@ import ShippmentsComponent from './ShippmentsComponent.vue';
                         duration: 5000
                     });
                     this.muteActions = false;
-                    this.noCountries = "Unable to show the countries. Please try again later."
                 });
             },
             compare(data) {
@@ -121,7 +124,7 @@ import ShippmentsComponent from './ShippmentsComponent.vue';
                     this.showResults = true;
                     this.muteActions = false;
                 }).catch(error => {
-                    this.noShippments = "No shippment methods found."
+                    this.noShippments = "No shipping methods found."
                     this.$message({
                         showClose: true,
                         dangerouslyUseHTMLString: true,

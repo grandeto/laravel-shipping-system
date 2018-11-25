@@ -28,19 +28,19 @@
                 width="200">
             </el-table-column>
             <el-table-column
-                label="Min Weight"
+                label="Min Weight (kg)"
                 prop="min_weight"
-                width="100">
+                width="150">
             </el-table-column>
             <el-table-column
-                label="Max Weight"
+                label="Max Weight (kg)"
                 prop="max_weight"
-                width="100">
+                width="150">
             </el-table-column>
             <el-table-column
                 label="Price ($)"
                 prop="price"
-                width="100">
+                width="150">
             </el-table-column>
         </el-table>
     </el-col>
