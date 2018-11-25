@@ -7,6 +7,9 @@
 
 require('./bootstrap');
 
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
 window.Vue = require('vue');
 
 /**
@@ -17,7 +20,9 @@ window.Vue = require('vue');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+import App from './components/App.vue';
+
+Vue.use(ElementUI);
 
 // const files = require.context('./', true, /\.vue$/i)
 
@@ -31,6 +36,13 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app'
-});
+
+if(document.getElementById("app")){
+    const app = new Vue({
+        el: '#app',
+        components: {
+            App
+          },
+        render: h => h(App)
+    });
+}
