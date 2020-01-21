@@ -35,9 +35,9 @@ class Price extends Model
     {
         $rules = [
             'default' => [
-                'origin_country_id' => 'required|numeric',
-                'destination_country_id' => 'required|numeric',
-                'weight' => 'required|numeric',
+                'origin_country_id' => 'required|numeric|exists:countries,id',
+                'destination_country_id' => 'required|numeric|exists:countries,id',
+                'weight' => 'required|numeric|min:0|max:999999999',
             ],
         ];
 
